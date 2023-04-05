@@ -1,0 +1,100 @@
+*{
+    background: rgb(248, 200, 183);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+}
+.logoAlura{
+    padding-top: 10px;
+    margin-left: 10px;
+    width: 8%;
+}
+
+main{
+    display: flex;
+    margin-bottom: 50px;
+    margin-left: 80px;
+}
+
+.text-area{
+    border: none;
+    color: rgb(0, 0, 0);
+    margin-top: 50px;
+    text-transform: lowercase;
+}
+::placeholder{color: #75284f}
+.text-area:focus{
+    outline: none;
+}
+
+.mensaje{
+    background: white;
+    background-image: url("imagenes/persona.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 24px;
+    color: black;
+    margin-left: 98px;
+    margin-top: 40px;
+    padding-left: 20px;
+    position: fixed;
+}
+.mensaje:focus{
+    outline: none;
+}
+
+.botones{
+    display: flex;
+    margin-top: 18px;
+}
+.btn-encriptar{
+    background-color: coral;
+    border: 1px solid coral;
+    border-radius: 24px;
+    color: white;
+    cursor: pointer;
+    height: 67px;
+    width: 180px;
+    margin-right: 32px;
+}
+.btn-encriptar:hover{
+    background-color: white;
+    color: coral;
+}
+.btn-desencriptar{
+    background-color: coral;
+    border: 1px solid coral;
+    border-radius: 24px;
+    color: white;
+    cursor: pointer;
+    height: 67px;
+    width: 180px;
+    margin-right: 32px;
+}
+.btn-desencriptar:hover{
+    background-color: white;
+    color: coral;
+}
+.btn-copiar{
+    background-color: transparent;
+    border: 1px solid coral;
+    border-radius: 24px;
+    color: #75284f;
+    cursor: pointer;
+    height: 50px;
+    margin-left: 108px;
+    margin-top: 490px;
+    position: absolute;
+    width: 332px;
+}
+.btn-copiar:hover{
+    background-color: coral;
+    color: white;
+}
+
+.informacion{
+    color: rgb(53, 53, 53);
+    font-size: 1px;
+}

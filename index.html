@@ -1,16 +1,154 @@
 <!DOCTYPE html>
-
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Cursos de Alura</title>
-    </head>
-    <body>
-        <ul>
-            <li>Vagrant</li>
-            <li>Docker</li>
-            <li>Ansible</li>
-            <li>Integración continua</li>
-        </ul>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Encriptador</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="imagenes/Logo.png" alt="Logo de Alura" class="logoAlura">
+    </header>
+    <main>
+        <section>
+            <textarea id="mensajeP" class="text-area" style="resize: none;" cols="30" rows="10" required placeholder="Ingrese el texto aquí..."></textarea>
+            <div>
+                <h6 class="información">&#9888 Solo letras minúsculas y sin acentos.</h6>
+            </div>
+            <div class="botones">
+                <button class="btn-encriptar" onclick="cifrarTexto()">Encriptar</button>
+                <button class="btn-desencriptar" onclick="decifrarTexto()">Desencriptar</button>  
+            </div>
+        </section>
+        <section>
+            <textarea id="output" class="mensaje" style="resize: none;" cols="30" rows="17"></textarea>
+            <div>
+                <button class="btn-copiar" onclick="copiarTexto()">Copiar</button>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+        function copiarTexto(){
+            const texto = document.getElementById("output");
+            texto.select();
+            document.execCommand("copy");
+            document.getElementById("output").value = "";
+            document.getElementById("mensajeP").value = "";
+        }
+        function cifrarTexto(){
+            var texto = document.getElementById("mensajeP").value;
+
+            if (/^[a-z ]+$/.test(texto)){
+                var textocifrado = encriptarTexto(texto);
+                document.getElementById("output").value = textocifrado;
+                document.getElementById("mensajeP").value = "";
+                document.getElementById("output").style.backgroundImage = "none";
+            }
+            else{
+                alert("El texto debe estar en mínusculas y sin acento");
+            }
+        }
+        function decifrarTexto(){
+            var texto = document.getElementById("mensajeP").value;
+
+            if (/^[a-z ]+$/.test(texto)){
+                var textodecifrado = desencriptarTexto(texto);
+                document.getElementById("output").value = textodecifrado;
+                document.getElementById("mensajeP").value = "";
+            }
+            else{
+                alert("El texto debe estar en mínusculas y sin acento");
+            }
+        }
+        function encriptarTexto(texto){
+            var caracteres = texto.split("");
+            var textoCifrado = "";
+            var letraCifrada = "";
+            for (var i = 0; i < caracteres.length; i++) {
+                letraCifrada = caracteres[i];
+                switch (letraCifrada){
+                    case "a":
+                        letraCifrada = "ai";
+                        break;
+                    case "e":
+                        letraCifrada = "enter";
+                        break;
+                    case "i":
+                        letraCifrada = "imes";
+                        break;
+                    case "o":
+                        letraCifrada = "ober";
+                        break;
+                    case "u":
+                        letraCifrada = "ufat";
+                        break; 
+                }
+                textoCifrado += letraCifrada;
+            }
+            return textoCifrado;
+        }
+        function desencriptarTexto(texto){
+            var caracteres = texto.split("");
+            var resultado = "";
+            for (var i = 0; i < caracteres.length; i++) {
+                switch (caracteres[i]){
+                    case "a":
+                        if (caracteres[i+1] == "i") {
+                            resultado += "a";
+                            i += 1;
+                        }
+                        else{
+                            resultado += caracteres[i];
+                        }
+                        break;
+                    case "e":
+                        if (caracteres[i+1] == "n" && caracteres[i+2] == "t" && caracteres[i+3] == "e" && caracteres[i+4] == "r") {
+                            resultado += "e";
+                            i += 4;
+                        }
+                        else{
+                            resultado += caracteres[i];
+                        }
+                        break;
+                    case "i":
+                        if (caracteres[i+1] == "m" && caracteres[i+2] == "e" && caracteres[i+3] == "s") {
+                            resultado += "i";
+                            i += 3;
+                        }
+                        else{
+                            resultado += caracteres[i];
+                        }
+                        break;
+                    case "o":
+                        if (caracteres[i+1] == "b" && caracteres[i+2] == "e" && caracteres[i+3] == "r") {
+                            resultado += "o";
+                            i += 3;
+                        }
+                        else{
+                            resultado += caracteres[i];
+                        }
+                        break;
+                    case "u":
+                        if (caracteres[i+1] == "f" && caracteres[i+2] == "a" && caracteres[i+3] == "t") {
+                            resultado += "u";
+                            i += 3;
+                        }
+                        else{
+                            resultado += caracteres[i];
+                        }
+                        break;
+                    default:
+                        resultado += caracteres[i];
+                        break;
+                }
+            }
+            return resultado;
+        }
+    </script>
 </html>
